@@ -14,9 +14,11 @@ export class ContaPoupanca extends Conta {
     }
 
     public sacar(valor: number): void {
-        if (valor >= this.calcularSaldo()) {  // verifica se saldo disponivel permite saque
+        if (valor <= this.calcularSaldo()) {  // verifica se saldo disponivel permite saque
             this.adicionarDebito(new Debito(valor, new Date()))
         }
+        else
+            throw new Error("Saldo insuficiente para realizar o saque.");
     }
 
     public calcularSaldo(): number {

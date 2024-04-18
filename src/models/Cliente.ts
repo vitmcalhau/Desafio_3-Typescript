@@ -22,7 +22,7 @@ export class Cliente extends Pessoa implements IUsuario {
         }
     }
 
-    public isVip(): boolean {
+    public getVip(): boolean {
         return this.vip;
     }
 
