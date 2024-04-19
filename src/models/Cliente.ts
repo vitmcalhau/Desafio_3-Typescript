@@ -1,19 +1,32 @@
 import { IUsuario } from "../interfaces/IUsuario";
+import { Conta } from "./Conta";
 import { Endereco } from "./Endereco";
 import { Pessoa } from "./Pessoa";
 
 export class Cliente extends Pessoa implements IUsuario {
     private vip: boolean;
+    private contas: Conta[];
     private enderecos: Endereco[] = [];
 
     constructor(cpf: string, nome: string, telefone: string, vip: boolean, endereco: Endereco) {
         super(cpf, nome, telefone);
         this.vip = vip;
+        this.contas = [];
         this.enderecos.push(endereco);
     }
 
     public autenticar(): boolean {
         return true;
+    }
+
+    public getContas(): Conta[] {
+        return this.contas;
+    }
+
+    public adicionarConta(conta: Conta): void {
+        if (conta) {
+            this.contas.push(conta);
+        }
     }
 
     public getEnderecos(): Endereco[] {

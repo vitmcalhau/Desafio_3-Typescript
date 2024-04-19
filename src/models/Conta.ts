@@ -3,8 +3,8 @@ import { Credito } from "./Credito";
 import { Debito } from "./Debito";
 
 export abstract class Conta {
-    private readonly numero: string;
-    private readonly cliente: Cliente;
+    private numero: string;
+    private cliente: Cliente;
     private creditos: Credito[];
     private debitos: Debito[];
 
@@ -13,6 +13,7 @@ export abstract class Conta {
         this.cliente = cliente;
         this.creditos = [];
         this.debitos = [];
+        cliente.adicionarConta(this);
     }
 
     public getNumero(): string {
