@@ -16,9 +16,22 @@ export class Cliente extends Pessoa implements IUsuario {
         return true;
     }
 
+    public getEnderecos(): Endereco[] {
+        return this.enderecos;
+    }
+
     public adicionarEndereco(endereco: Endereco): void {
         if (endereco) {
             this.enderecos.push(endereco);
+        }
+    }
+
+    // sobrecarga de metodo para adicionar varios enderecos de uma vez
+    public adicionarEnderecos(enderecos: Endereco[]): void {
+        if (enderecos) {
+            for (let endereco of enderecos) {
+                this.enderecos.push(endereco);
+            }
         }
     }
 
@@ -30,5 +43,15 @@ export class Cliente extends Pessoa implements IUsuario {
         for (let endereco of this.enderecos) {
             console.log(endereco.toString());
         }
+    }
+
+    public toString(): string {
+        return `--- CLIENTE ---
+                CPF: ${this.getCpfFormat()}
+                Nome: ${this.getNome()}
+                Telefone: ${this.getTelefoneFormat()}
+                VIP: ${this.vip ? "Sim" : "Não"}
+                Endereço(s):\n${this.enderecos.join("")}
+                `.replace(/(\n)\s+/g, '\n');  // remove identacao da string
     }
 }

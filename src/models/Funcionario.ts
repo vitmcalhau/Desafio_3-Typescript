@@ -35,4 +35,13 @@ export class Funcionario extends Pessoa implements IUsuario {
         return this.salario;
     }
 
+    public toString(): string {
+        return `--- FUNCIONARIO ---
+                CPF: ${this.getCpfFormat()}
+                Nome: ${this.getNome()}
+                Telefone: ${this.getTelefoneFormat()}
+                Cargo: ${this.cargos.join(", ")}
+                Salário: ${this.salario}
+                `.replace(/(\n)\s+/g, '\n');  // remove identacao da string
+    }
 }

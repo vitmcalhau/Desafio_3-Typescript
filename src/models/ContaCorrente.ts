@@ -46,6 +46,11 @@ export class ContaCorrente extends Conta {
             throw new Error("Saldo insuficiente para realizar a transferência.");
     }
 
+    public setLimite(limite: number): void {
+        if (limite >= 0)
+            this.limite = limite;
+    }
+
     public calcularSaldo(): number {
         let soma: number = this.limite;
         
