@@ -43,9 +43,11 @@ export abstract class Conta {
     /**
      * Remove e retorna a instancia de Credito na posicao @param indice do vetor
      */
-    public removerCredito(indice: number): Credito {
+    /*
+    private removerCredito(indice: number): Credito {
         return this.creditos.splice(indice, 1)[0];
     }
+    */
 
     public getDebitos(): Debito[] {
         return this.debitos;
